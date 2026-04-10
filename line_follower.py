@@ -57,7 +57,6 @@ def pid_line_follower(follow_sensor, stop_sensor,
         last_error = error
         wait(10)
 
-    motor_right.stop(Stop.BRAKE)
-    motor_left.stop(Stop.BRAKE)
-
-pid_line_follower(csL, csR, m2, m3, base_speed=500, Kp=2, Kd=3, side="r", stop_mode="a", max_angle=2000)
+    left_motor.stop(Stop.BRAKE)
+    right_motor.stop(Stop.BRAKE)
+    ev3.speaker.beep()  
