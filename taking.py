@@ -53,8 +53,6 @@ m1.run_angle(-1000, 280)
 
 
 
-# First movement
-move_motors(ls=500, rs=-500, duration=1000)
 
 left_motor.reset_angle(0)
 right_motor.reset_angle(0)
