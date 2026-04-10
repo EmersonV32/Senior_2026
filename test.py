@@ -32,38 +32,37 @@ def move_motors(left_speed, right_speed, duration_ms=None, rotations=None):
 
 
 # ===== MAIN PROGRAM =====
-motor_a.run_angle(-1000, 280)
+motor_a.run_angle(-1000, 280) # moves the white thing up
 
-move_motors(500, -500, duration_ms=1000)
+move_motors(500, -500, duration_ms=1000) # aligns with the wall
 wait(500)
 
-move_motors(-300, 300, rotations=1.23)
+move_motors(-300, 300, rotations=1.23) # moves to the first row of yellow blocks
 left_motor.stop(Stop.BRAKE)
 right_motor.stop(Stop.BRAKE)
 wait(500)
 
-motor_a.run_angle(600, 250)
+motor_a.run_angle(600, 250) # move down the white thing to take first row of yellow blocks
 wait(500)
 
-motor_d.run(550)
+motor_d.run(500) # holds the blocks in place
 wait(1000)
 
-motor_a.run_angle(-1600, 300)
+motor_a.run_angle(-1000, 350) # move up the white thing
 
-move_motors(-200, 200, rotations=0.3)
+move_motors(-200, 200, rotations=0.4) # moves to the second row of yellow blocks
 left_motor.stop(Stop.COAST)
 right_motor.stop(Stop.COAST)
 
-motor_a.run_angle(200, 60)
+motor_a.run_angle(200, 90) # moves the white thing down a little bit
 wait(2000)
 
 motor_d.stop()
 wait(50)
-motor_d.run_angle(-300, 50)
+motor_d.run_angle(-300, 150) # releases the yellow block on top of the blue block
+wait(1000)
 
-wait(2000)
-
-move_motors(-100, 100, rotations=0.1)
+move_motors(-100, 100, rotations=0.03)
 
 motor_a.run_angle(600, 250)
 wait(1000)
