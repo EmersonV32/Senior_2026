@@ -28,6 +28,11 @@ motor_b.reset_angle(0)
 motor_c.reset_angle(0)
 motor_d.reset_angle(0)
 
+sensor_a = ColorSensor(Port.S1)
+sensor_b = ColorSensor(Port.S2)
+sensor_c = ColorSensor(Port.S3)
+sensor_d = ColorSensor(Port.S4)
+
 
 def pid_line_follower(follow_sensor_port=Port.S1,
                       stop_sensor_port=Port.S4,
