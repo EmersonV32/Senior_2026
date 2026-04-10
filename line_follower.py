@@ -1,4 +1,34 @@
-# ===== NEW PID LINE FOLLOWER =====
+#!/usr/bin/env pybricks-micropython
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import (Motor,ColorSensor)
+from pybricks.parameters import Port, Stop, Direction, Button, Color
+from pybricks.tools import wait, StopWatch, DataLog
+from pybricks.robotics import DriveBase
+from pybricks.media.ev3dev import SoundFile, ImageFile
+# Create your objects here.
+ev3 = EV3Brick()
+# Write your program here.
+ev3.speaker.beep()
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import Motor
+from pybricks.parameters import Port
+from pybricks.tools import wait
+
+# Initialize motors (adjust ports if needed)
+left_motor = Motor(Port.B)
+right_motor = Motor(Port.C)
+
+# Initialize only Motor A
+motor_a = Motor(Port.A)
+motor_b = Motor(Port.B)
+motor_c = Motor(Port.C)
+motor_d = Motor(Port.D)
+motor_a.reset_angle(0)
+motor_b.reset_angle(0)
+motor_c.reset_angle(0)
+motor_d.reset_angle(0)
+
+
 def pid_line_follower(follow_sensor_port=Port.S1,
                       stop_sensor_port=Port.S4,
                       base_speed=400,
@@ -56,3 +86,13 @@ def pid_line_follower(follow_sensor_port=Port.S1,
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)
     ev3.speaker.beep()  
+
+pid_line_follower(follow_sensor_port=Port.S4,
+                      stop_sensor_port=Port.S1,
+                      base_speed=400,
+                      Kp=2, Kd=3, Ki=0,
+                      target=30,
+                      max_angle=None,
+                      stop_mode="c",
+                      stop_threshold=20,
+                      side="r")
