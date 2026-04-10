@@ -128,6 +128,6 @@ def test_test():
     wait(1000)
     motor_d.run_time(500, 500)
     # Wait 1 second (1000 milliseconds)
-    wait(2000)
+    wait(500)
     # Move 360 degrees (1 full rotation)
     motor_a.run_angle(-1000, 270)

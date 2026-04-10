@@ -16,8 +16,6 @@ from pybricks.parameters import Port
 from pybricks.tools import wait
 
 from runprogram import test_test
-# Initialize the EV3 brick
-ev3 = EV3Brick()
 
 # Initialize motors (adjust ports if needed)
 left_motor = Motor(Port.B)
