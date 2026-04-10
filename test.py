@@ -37,24 +37,25 @@ motor_a.run_angle(-1000, 280)
 move_motors(500, -500, duration_ms=1000)
 wait(500)
 
-move_motors(-300, 300, rotations=1.21)
+move_motors(-300, 300, rotations=1.23)
 left_motor.stop(Stop.BRAKE)
 right_motor.stop(Stop.BRAKE)
 wait(500)
 
 motor_a.run_angle(600, 250)
+wait(500)
 
-motor_d.run(500)
+motor_d.run(550)
 wait(1000)
 
-motor_a.run_angle(-1000, 270)
+motor_a.run_angle(-1600, 300)
 
-# Adjust
 move_motors(-200, 200, rotations=0.3)
 left_motor.stop(Stop.COAST)
 right_motor.stop(Stop.COAST)
 
-motor_a.run_angle(200, 50)
+motor_a.run_angle(200, 60)
+wait(2000)
 
 motor_d.stop()
 wait(50)
