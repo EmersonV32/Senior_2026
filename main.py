@@ -14,6 +14,8 @@ from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor
 from pybricks.parameters import Port
 from pybricks.tools import wait
+
+from runprogram import test_test
 # Initialize the EV3 brick
 ev3 = EV3Brick()
 
@@ -37,6 +39,8 @@ motor_d.reset_angle(0)
 left_motor.reset_angle(0)
 right_motor.reset_angle(0)
 wait(50)  # छोट pause to stabilize motors
+
+test_test()
 
 def move_motors(left_speed, right_speed, duration_ms=None, rotations=None):
     if duration_ms is not None:
@@ -64,7 +68,7 @@ wait(2000)'''
 
 
 
-
+'''
 motor_a.run_angle(-1000, 280)
 
 # First movement
@@ -235,3 +239,4 @@ move_motors_line_follow(
     midpoint=30,        # adjust depending on track colors
     stop_threshold=20   # stop when stop sensor sees reflection <20
 )
+'''

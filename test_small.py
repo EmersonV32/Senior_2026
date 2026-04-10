@@ -24,6 +24,7 @@ motor_d.reset_angle(0)
 
 wait(50)
 
+'''
 # ===== BASIC MOVEMENT FUNCTION =====
 def move_motors(left_speed, right_speed, duration_ms=None, rotations=None):
     if duration_ms is not None:
@@ -121,11 +122,12 @@ def pid_line_follower(follow_sensor_port=Port.S1,
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)
     ev3.speaker.beep()
+'''
 
-
-wait(1000)
-motor_d.run(300)
-# Wait 1 second (1000 milliseconds)
-wait(2000)
-# Move 360 degrees (1 full rotation)
-motor_a.run_angle(-1000, 270)
+def test_test():
+    wait(1000)
+    motor_d.run_time(500, 500)
+    # Wait 1 second (1000 milliseconds)
+    wait(2000)
+    # Move 360 degrees (1 full rotation)
+    motor_a.run_angle(-1000, 270)
