@@ -54,50 +54,39 @@ wait(1000)
 
 motor_a.run_time(-1000, 1100)  # move up the white thing
 
-move_motors(-200, 210, rotations=0.3613548645132) # moves to the second row of yellow blocks
+move_motors(-100, 110, rotations=0.378) # moves to the second row of yellow blocks
 left_motor.stop(Stop.COAST)
 right_motor.stop(Stop.COAST)
 
-motor_a.run_angle(200, 165) # moves the white thing down a little bit
+motor_a.run_angle(200, 160) # moves the white thing down a little bit
 wait(170)
 
 motor_d.stop()
 wait(50)
-motor_d.run_time(-100, 1000) # releases the yellow block on top of the blue block
 
-wait(1000)
+motor_a.run_time(350, 650, wait=False) # moves the white thing down
 
-motor_a.run_time(350, 1200, wait=False) # moves the white thing down
-wait(100)
+motor_d.run_time(-1000, 200) # releases the yellow block on top of the blue block
+wait(250)
 
+move_motors(-100, 110, rotations=0.1) #moevs a little bit forward to adjust
+
+motor_a.run_time(1000, 1500) # moves the white thing down
+
+motor_d.run(500) # holds the block 
+wait(200)
+
+motor_a.run_time(-1000, 500) # moves the white thing up
+
+
+
+
+'''
 counter = 0
-while counter <= 4:
-    move_motors(-200, -200, degrees=15)
-    move_motors(200, 200, degrees=15)
+while counter <= 3:
+    move_motors(-100, -200, degrees=15)
+    move_motors(100, 200, degrees=15)
     counter +=1
 left_motor.stop(Stop.COAST)
 right_motor.stop(Stop.COAST)
-
-motor_d.run(500) # holds the block 
-wait(2000)
-
-# Move forward
-move_motors(-400, -400, rotations=0.8)
-left_motor.stop(Stop.BRAKE)
-right_motor.stop(Stop.BRAKE)
-
-# Turn
-move_motors(500, -500, duration_ms=1000)
-
-# Move until line
-move_until_reflect_condition(
-    left_speed=-400,
-    right_speed=400,
-    sensor_port=Port.S4,
-    threshold=30,
-    condition="below"
-)
-
-# Small adjust
-move_motors(-200, 200, rotations=0.5)
-move_motors(500, 500, rotations=0.7)
+'''
