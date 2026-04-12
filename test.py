@@ -52,9 +52,9 @@ wait(500)
 motor_d.run(500) # holds the blocks in place
 wait(1000)
 
-motor_a.run_time(-1000, 1100)  # move up the white thing
+motor_a.run_time(-1000, 900)  # move up the white thing
 
-move_motors(-100, 110, rotations=0.378) # moves to the second row of yellow blocks
+move_motors(-100, 100, rotations=0.378) # moves to the second row of yellow blocks
 left_motor.stop(Stop.COAST)
 right_motor.stop(Stop.COAST)
 
@@ -64,26 +64,36 @@ wait(170)
 motor_d.stop()
 wait(50)
 
-motor_a.run_time(350, 650, wait=False) # moves the white thing down
+motor_a.run_time(350, 500, wait=False) # moves the white thing down
+wait(500)
 
-motor_d.run_time(-1000, 100.1) # releases the yellow block on top of the blue block
+motor_d.run_time(-1000, 200) # releases the yellow block on top of the blue block
 wait(250)
 
-motor_a.run_time(50, 2500, wait=False) # moves the white thing down
-
+motor_a.run_time(75, 1000, wait=False) # moves the white thing down
+'''
 counter = 0
-while counter <= 6:
+while counter <= 3:
     move_motors(-100, -100, degrees=20)
     move_motors(100, 100, degrees=20)
     counter +=1
 left_motor.stop(Stop.COAST)
 right_motor.stop(Stop.COAST)
-
+'''
 motor_d.run(500) # holds the block 
 wait(200)
 
-wait(100000000)
-motor_a.run_time(-1000, 500) # moves the white thing up
+motor_a.run_angle(-1000, 200) # moves the white thing up
+
+wait(10000)
+
+
+
+
+
+
+
+
 
 
 
