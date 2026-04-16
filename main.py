@@ -4,6 +4,7 @@ from pybricks.ev3devices import Motor, ColorSensor
 from pybricks.parameters import Port, Stop
 from pybricks.tools import wait
 from taking import mozaic
+from tools import tools
 
 ev3 = EV3Brick()
 
