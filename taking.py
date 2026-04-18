@@ -11,7 +11,7 @@ left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
 motor_a = Motor(Port.A)
 motor_d = Motor(Port.D)
-csL = ColorSensor(Port.S1)
+colorsensorLeft = ColorSensor(Port.S1)
 
 #Reset angles
 left_motor.reset_angle(0)
@@ -63,7 +63,7 @@ def mozaic():
     move_motors(-500, 500, rotations=2.45) 
     wait(100)
 
-    while csL.reflection() > 30:
+    while colorsensorLeft.reflection() > 30:
         left_motor.run(-500)
         right_motor.run(500)
 
@@ -98,7 +98,7 @@ def mozaic():
     motor_d.run_time(-300, 250) # releases the first row in the grid
     wait(250)
 
-    motor_a.run_angle(-1000, 250) # mmoves the white thing up a little bit
+    motor_a.run_angle(-1000, 250) # moves the white thing up a little bit
     '''
     counter = 0
     while counter <= 2:
@@ -168,112 +168,4 @@ motor_a.run_angle(-1000, 110) # moves the white thing up
 
 
 wait(100000)
-'''
-
-
-
-
-'''
-#taking 2 rows of blocks so 6 blocks in total
-    motor_a.run_angle(-1000, 280) # moves the white thing up
-
-    move_motors(500, -500, duration_ms=850) # aligns with the wall
-    wait(500)
-
-    move_motors(-300, 302, rotations=1.23) # moves to the first row of yellow blocks
-    left_motor.stop(Stop.BRAKE)
-    right_motor.stop(Stop.BRAKE)
-    wait(500)
-
-    motor_a.run_angle(600, 260) # move down the white thing to take first row of yellow blocks
-    wait(500)
-
-    wait(1000)
-
-    motor_d.run(500) # holds the blocks in place
-    wait(1000)
-
-    motor_a.run_time(-1000, 900)  # move up the white thing
-
-    move_motors(-100, 100, rotations=0.385) # moves to the second row of yellow blocks
-    left_motor.stop(Stop.COAST)
-    right_motor.stop(Stop.COAST)
-
-    motor_a.run_angle(200, 120) # moves the white thing down a little bit
-    wait(170)
-
-    motor_d.stop()
-    wait(50)
-
-    #motor_a.run_time(200, 900) # moves the white thing down
-
-    motor_d.run_time(-300, 250) # releases the first row of yellow block on top of the second row 
-    wait(250)
-
-    motor_a.run_time(100, 1200, wait=False) # moves the white thing down
-    wait(400)
-
-    counter = 0
-    while counter <= 3:
-        move_motors(-100, -100, degrees=10)
-        move_motors(100, 100, degrees=10)
-        counter +=1
-    left_motor.stop(Stop.COAST)
-    right_motor.stop(Stop.COAST)
-
-
-    motor_d.run(500) # holds the block 
-    wait(200)
-
-    motor_a.run_angle(-1000, 200) # moves the white thing up
-
-    move_motors(-500,-500, rotations=0.41)
-    wait(100)
-
-    move_motors(-500, 500, rotations=2.45) 
-    wait(100)
-
-    while csL.reflection() > 30:
-        left_motor.run(-500)
-        right_motor.run(500)
-
-    left_motor.stop(Stop.BRAKE)
-    right_motor.stop(Stop.BRAKE)
-    wait(100)
-
-    move_motors(-200, 200, rotations=0.1)
-    wait(100)
-
-    left_motor.run_angle(-400, 150)
-
-    pid_line_follower(follow_sensor_port=Port.S1,
-                        stop_sensor_port=Port.S4,
-                        base_speed=250,
-                        Kp=2.5, Kd=3, Ki=0,
-                        target=50,
-                        max_angle=None,
-                        stop_mode="c",
-                        stop_threshold=20,
-                        side="l")
-
-    wait(100)
-    move_motors(-200, 200, rotations=0.85)
-
-    motor_a.run_angle(1000, 200) # moves the white thing down to deposit on black thing
-    wait(100)
-
-    motor_d.stop()
-    wait(50)
-
-    motor_d.run_time(-300, 250) # releases the first row in the grid
-    wait(250)
-
-    motor_a.run_angle(-1000, 150) # mmoves the white thing up a little bit 
-    wait(100)
-
-    motor_d.run(500) # holds the blocks in place
-    wait(100)
-
-    move_motors(100, -100, degrees=360)
-    wait(100)
 '''
