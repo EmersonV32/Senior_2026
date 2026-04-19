@@ -39,7 +39,7 @@ def tool():
     while not connected:
         try:
             ev3.screen.print("Linking to Slave...")
-            sock.connect(socket.getaddrinfo('192.168.2.1', 12345)[0][-1])
+            sock.connect(socket.getaddrinfo('192.168.0.1', 12345)[0][-1])
             connected = True
         except OSError:
             ev3.screen.print("Retry in 1s...")
