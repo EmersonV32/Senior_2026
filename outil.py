@@ -30,8 +30,6 @@ def done(sock):
     sock.close()
 
 def tool():
-    ev3.speaker.beep() 
-    wait(500)
     ev3.speaker.beep()
     sock = socket.socket()
 
@@ -53,9 +51,27 @@ def tool():
     #ev3.speaker.beep() 
 
 
-    move_motors(500, -500, rotations= 2.05)
+    move_motors(500, -500, rotations= 0.15)
 
-    move_motors(-500, -500, rotations= 0.7)
+    move_motors(-500, -500, rotations= 1.45)
+    wait(500)
+
+    send_cmd(sock, "T,500,500")
+    wait(250)
+
+
+    move_motors(-50, -50, degrees=50)
+    move_motors(50, 50, degrees=50)
+
+
+    wait(5000)
+
+    send_cmd(sock, "T,-1000, 500")
+    wait(500)
+
+    move_motors(-500,500, rotations=1.5)
+
+    wait(10000)
 
     while colorsensorRight.reflection() > 18:
         left_motor.run(-500)
@@ -73,7 +89,7 @@ def tool():
                         stop_sensor_port=Port.S4,
                         base_speed=350,
                         Kp=2.5, Kd=3, Ki=0,
-                        target=50,
+                        target=47,
                         max_angle=850,
                         stop_mode="a",
                         stop_threshold=20,
@@ -84,7 +100,7 @@ def tool():
                         stop_sensor_port=Port.S4,
                         base_speed=350,
                         Kp=2.5, Kd=3, Ki=0,
-                        target=50,
+                        target=47,
                         max_angle=None,
                         stop_mode="c",
                         stop_threshold=20,
@@ -92,7 +108,7 @@ def tool():
 
     move_motors(500, 500, rotations=0.8)
 
-    send_cmd(sock, "T,670,250")
+    
 
     wait(500)
 
@@ -102,7 +118,7 @@ def tool():
                     stop_sensor_port=Port.S4,
                     base_speed=467,
                     Kp=2.5, Kd=3, Ki=0,
-                    target=50,
+                    target=47,
                     max_angle=1000,
                     stop_mode="a",
                     stop_threshold=20,

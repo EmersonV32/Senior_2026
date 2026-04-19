@@ -39,12 +39,10 @@ def move_motors(left_speed, right_speed, duration_ms=None, rotations=None, degre
 
 # ===== MAIN PROGRAM =====
 def mozaic():
-    motor_a.run_angle(-1000, 280) # moves the white thing up
-
     move_motors(500, -500, duration_ms=850) # aligns with the wall
     wait(500)
 
-    move_motors(-300, 302, rotations=1.23) # moves to the first row of yellow blocks
+    move_motors(-300, 302, rotations=1.21) # moves to the first row of yellow blocks
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)
     wait(500)
@@ -57,10 +55,12 @@ def mozaic():
 
     motor_a.run_time(-1000, 900)  # move up the white thing
 
-    move_motors(-500,-500, rotations=0.41)
+    move_motors(500,-500, rotations=0.1)
+
+    move_motors(-500,-500, rotations=0.38) # turns to go deposit to the black grid
     wait(100)
 
-    move_motors(-500, 500, rotations=2.45) 
+    move_motors(-567, 567, rotations=2.8) 
     wait(100)
 
     while colorsensorLeft.reflection() > 30:
@@ -71,16 +71,16 @@ def mozaic():
     right_motor.stop(Stop.BRAKE)
     wait(100)
 
-    move_motors(-200, 200, rotations=0.1)
+    move_motors(-200, 200, rotations=0.12)
     wait(100)
 
-    left_motor.run_angle(-400, 180)
+    left_motor.run_angle(-410, 180)
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
                         base_speed=250,
-                        Kp=2.5, Kd=3, Ki=0,
-                        target=50,
+                        Kp=2, Kd=3, Ki=0,
+                        target=47,
                         max_angle=None,
                         stop_mode="c",
                         stop_threshold=20,
@@ -99,15 +99,6 @@ def mozaic():
     wait(250)
 
     motor_a.run_angle(-1000, 250) # moves the white thing up a little bit
-    '''
-    counter = 0
-    while counter <= 2:
-        move_motors(-100, -200, degrees=10)
-        move_motors(100, 200, degrees=10)
-        counter +=1
-    left_motor.stop(Stop.COAST)
-    right_motor.stop(Stop.COAST)
-    '''
 
     wait(100)
 
