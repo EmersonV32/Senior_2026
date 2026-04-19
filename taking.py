@@ -57,10 +57,10 @@ def mozaic():
 
     move_motors(500,-500, rotations=0.1)
 
-    move_motors(-500,-500, rotations=0.38) # turns to go deposit to the black grid
+    move_motors(-500,-500, rotations=0.4) # turns to go deposit to the black grid
     wait(100)
 
-    move_motors(-567, 567, rotations=2.8) 
+    move_motors(-567, 575, rotations=2.95) 
     wait(100)
 
     while colorsensorLeft.reflection() > 30:
@@ -74,7 +74,7 @@ def mozaic():
     move_motors(-200, 200, rotations=0.12)
     wait(100)
 
-    left_motor.run_angle(-410, 180)
+    left_motor.run_angle(-450, 180)
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
