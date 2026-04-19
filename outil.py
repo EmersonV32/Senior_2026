@@ -31,10 +31,26 @@ def done(sock):
 
 def tool():
     ev3.speaker.beep() 
+    wait(500)
+    ev3.speaker.beep()
     sock = socket.socket()
-    wait(250)
-    sock.connect(socket.getaddrinfo('192.168.2.1', 12345)[0][-1])
-    ev3.speaker.beep() 
+
+    connected = False
+    while not connected:
+        try:
+            ev3.screen.print("Linking to Slave...")
+            sock.connect(socket.getaddrinfo('192.168.2.1', 12345)[0][-1])
+            connected = True
+        except OSError:
+            ev3.screen.print("Retry in 1s...")
+            wait(1000) 
+
+    ev3.screen.print("Connected!")
+    ev3.speaker.beep()
+
+
+    #sock.connect(socket.getaddrinfo('192.168.0.1', 12345)[0][-1])
+    #ev3.speaker.beep() 
 
 
     move_motors(500, -500, rotations= 2.05)
