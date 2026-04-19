@@ -57,7 +57,7 @@ def mozaic():
 
     move_motors(500,-500, rotations=0.1)
 
-    move_motors(-500,-500, rotations=0.4) # turns to go deposit to the black grid
+    move_motors(-500,-500, rotations=0.45) # turns to go deposit to the black grid
     wait(100)
 
     move_motors(-567, 575, rotations=2.95) 

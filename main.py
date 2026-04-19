@@ -9,5 +9,5 @@ from outil import tool
 
 ev3 = EV3Brick()
 
-#mozaic()
+mozaic()
 tool()

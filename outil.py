@@ -79,7 +79,7 @@ def tool():
     right_motor.stop(Stop.BRAKE)
     wait(100)
 
-    move_motors(-500, 500, rotations=0.25)
+    move_motors(-500, 500, rotations=0.15)
     wait(100)
 
     move_motors(-500, -500, rotations=0.75)
@@ -114,18 +114,22 @@ def tool():
     move_motors(-500, 500, rotations=0.97)
     wait(100)
 
-    move_motors(-500, -500, rotations=0.75)
+    move_motors(-500, -500, rotations=0.735)
     wait(250)
 
-    while colorsensorLeft.reflection() < 70:
-        left_motor.run(-150)
-        right_motor.run(150)
+    move_motors(-250, 250, rotations=0.44)
+    wait(250)
 
-    left_motor.stop(Stop.BRAKE)
-    right_motor.stop(Stop.BRAKE)
+    motor_a.run_angle(600, 260)
+    wait(250)
+
+    motor_d.run(500) # holds the blocks in place
     wait(100)
 
-    move_motors(500, -500, rotations=0.15)
+    motor_a.run_time(-1000, 900)
+    wait(250)
+    
+
         
 
     done(sock)
