@@ -100,7 +100,7 @@ def mozaic():
 
     motor_a.run_angle(-1000, 250) # moves the white thing up a little bit
 
-    wait(100)
+    wait(1000)
 
 #############
 #the section of the program ends here

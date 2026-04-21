@@ -29,7 +29,7 @@ def done(sock):
     send_cmd(sock, "done")
     sock.close()
 
-def tool():
+def tool1():
     ev3.speaker.beep()
     sock = socket.socket()
 
@@ -60,7 +60,7 @@ def tool():
     move_motors(75, 75, degrees=50)
 
     send_cmd(sock, "T,-1000, 500") # turns up the motor A
-    wait(500)
+    wait(250)
 
     move_motors(-500, 500, rotations=1.5) 
     wait(100)
@@ -111,10 +111,10 @@ def tool():
 
     wait(125)
 
-    move_motors(-500, 500, rotations=0.97)
+    move_motors(-500, 500, rotations=0.967)
     wait(100)
 
-    move_motors(-500, -500, rotations=0.735)
+    move_motors(-500, -500, rotations=0.745)
     wait(250)
 
     move_motors(-250, 250, rotations=0.44)
@@ -128,29 +128,55 @@ def tool():
 
     motor_a.run_time(-1000, 900)
     wait(250)
+
+    move_motors(500, -500, rotations=0.55)
+    wait(100)
+
+    move_motors(-500, -500, roations=0.745)
+    wait(100)
+
+    move_motors(-500, 500, rotations=0.55)
+    wait(100)
+
+
+    pid_line_follower(follow_sensor_port=Port.S1,
+                        stop_sensor_port=Port.S4,
+                        base_speed=350,
+                        Kp=2, Kd=2, Ki=0,
+                        target=47,
+                        max_angle=None,
+                        stop_mode="c",
+                        stop_threshold=20,
+                        side="r")
+    
+    wait(250)
+
+    move_motors(-300, 300, rotations=0.15)
+    wait(100)
+
+    move_motors(500, 500, rotations=0.745)
+    wait(100)
+
+    send_cmd(sock, "T, 500, 250")
+    wait(249)
+
+    move_motors(-500, -500, rotations=0.745)
+    wait(150)
+
+    move_motors(500, -500, rotations=1.4)
+    wait(150)
+
+    move_motors(500, 500, rotations=0.745)
+    wait(150)
+
+    send_cmd(sock, "T, -750, 150")
+    wait()
+
+
+
+
     
 
         
 
     done(sock)
-
-
-
-    '''
-    move_motors(750, -750, duration_ms= 2000)
-    wait(100)
-
-    move_motors(-500, 500, rotations=0.2)
-    wait(100)
-
-    move_motors(500, 500, rotations=0.7)
-    wait(100)
-
-    send_cmd(sock, "T, 250, 800")
-    wait(750)
-
-    move_motors(-500, 500, rotations=1.5)
-
-    send_cmd(sock, "T, -1000, 1000")
-    wait(1000)
-    '''

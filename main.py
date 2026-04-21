@@ -5,9 +5,9 @@ from pybricks.parameters import Port, Stop
 from pybricks.tools import wait, StopWatch
 from line_follower import pid_line_follower
 from taking import mozaic
-from outil import tool
+from outil1 import tool1
 
 ev3 = EV3Brick()
 
-mozaic()
+#mozaic()
 tool()
