@@ -56,20 +56,20 @@ def tool1():
 
 
     move_motors(-75, -75, degrees=30)
-    wait(100)
-    move_motors(75, 75, degrees=50)
+    wait(150)
+    move_motors(75, 75, degrees=35)
 
     send_cmd(sock, "T,-1000, 500") # turns up the motor A
-    wait(250)
+    wait(150)
 
-    move_motors(-500, 500, rotations=1.5) 
-    wait(100)
+    move_motors(-500, 500, rotations=1.67) 
+    wait(150)
 
     move_motors(500, 500, rotations=0.75)
-    wait(100)
+    wait(150)
 
     move_motors(-500, 500, rotations=1.85)
-    wait(100)
+    wait(150)
 
     while colorsensorLeft.reflection() > 30:
         left_motor.run(-500)
@@ -77,13 +77,13 @@ def tool1():
 
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)
-    wait(100)
+    wait(250)
 
-    move_motors(-500, 500, rotations=0.15)
-    wait(100)
+    move_motors(-300, 300, rotations=0.15)
+    wait(150)
 
     move_motors(-500, -500, rotations=0.75)
-    wait(100)
+    wait(150)
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
@@ -94,10 +94,10 @@ def tool1():
                         stop_mode="c",
                         stop_threshold=20,
                         side="l")
-    wait(100)
+    wait(150)
 
     move_motors(-500, 500, rotations=0.15)
-    wait(100)
+    wait(150)
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
@@ -111,32 +111,32 @@ def tool1():
 
     wait(125)
 
-    move_motors(-500, 500, rotations=0.967)
-    wait(100)
-
-    move_motors(-500, -500, rotations=0.745)
+    move_motors(-250, 250, rotations=0.967)
     wait(250)
 
-    move_motors(-250, 250, rotations=0.44)
+    move_motors(-250, -250, rotations=0.75)
+    wait(250)
+
+    move_motors(-250, 250, rotations=0.42)
     wait(250)
 
     motor_a.run_angle(600, 260)
     wait(250)
 
     motor_d.run(500) # holds the blocks in place
-    wait(100)
+    wait(150)
 
     motor_a.run_time(-1000, 900)
     wait(250)
 
     move_motors(500, -500, rotations=0.55)
-    wait(100)
+    wait(150)
 
     move_motors(-500, -500, rotations=0.745)
-    wait(100)
+    wait(150)
 
-    move_motors(-500, 500, rotations=0.55)
-    wait(100)
+    move_motors(-500, 500, rotations=0.9)
+    wait(150)
 
 
     pid_line_follower(follow_sensor_port=Port.S1,
@@ -151,25 +151,27 @@ def tool1():
     
     wait(250)
 
-    move_motors(-300, 300, rotations=0.15)
-    wait(100)
+    move_motors(-300, 300, rotations=0.45)
+    wait(150)
 
-    move_motors(500, 500, rotations=0.745)
-    wait(100)
+    move_motors(500, 500, rotations=0.5)
+    wait(150)
 
-    send_cmd(sock,"T, 350, 450") # turns down the motor A
+    send_cmd(sock,"T, 500, 450") # turns down the motor A
     wait(500)
 
-    move_motors(-500, -500, rotations=0.745)
+    move_motors(-500, -500, rotations=0.5)
     wait(150)
 
-    move_motors(500, -500, rRotations=1.4)
+    move_motors(500, -500, rotations=1.7)
     wait(150)
 
     move_motors(500, 500, rotations=0.745)
     wait(150)
 
-    send_cmd(sock, "T, -750, 200") # turns up motor A
-    wait(250)
+    send_cmd(sock, "T, -750, 500") # turns up motor A
+    wait(600)
+
+    ev3.speaker.beep()
 
     return sock

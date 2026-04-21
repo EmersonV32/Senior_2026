@@ -84,11 +84,48 @@ def tool2(sock):
     move_motors(500, 500, rotations=0.745)
     wait(100)
 
-    move_motors(-500, 500, rotations=2.1)
+    move_motors(-350, 350, rotations=1.75)
     wait(100)
 
-    send_cmd(sock, "T, -1000, 300")
+    send_cmd(sock, "T, -1000, 300") # turns up the motor A
     wait(300)
 
+    move_motors(-500, -500, rotations=1.2)
+    wait(250)
+
+    move_motors(-500, 500, rotations=2.5)
+    wait(150)
+
+    while colorsensorLeft.reflection() > 30:
+        left_motor.run(-500)
+        right_motor.run(500)
+
+    left_motor.stop(Stop.BRAKE)
+    right_motor.stop(Stop.BRAKE)
+    wait(250)
+
+    right_motor.run_angle(500, 160)
+    wait(250)
+
+    pid_line_follower(follow_sensor_port=Port.S1,
+                        stop_sensor_port=Port.S4,
+                        base_speed=250,
+                        Kp=2, Kd=3, Ki=0,
+                        target=47,
+                        max_angle=None,
+                        stop_mode="c",
+                        stop_threshold=22,
+                        side="l")
+    
+    wait(150)
+
+    move_motors(-500, -500, rotations=1.49)
+    wait(250)
+
+    send_cmd(sock,"T, 500, 450") # turns down the motor A
+    wait(500)
+
+
+                    
     ev3.speaker.beep()
 
