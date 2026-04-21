@@ -132,7 +132,7 @@ def tool1():
     move_motors(500, -500, rotations=0.55)
     wait(100)
 
-    move_motors(-500, -500, roations=0.745)
+    move_motors(-500, -500, rotations=0.745)
     wait(100)
 
     move_motors(-500, 500, rotations=0.55)
@@ -157,26 +157,19 @@ def tool1():
     move_motors(500, 500, rotations=0.745)
     wait(100)
 
-    send_cmd(sock, "T, 500, 250")
-    wait(249)
+    send_cmd(sock,"T, 350, 450") # turns down the motor A
+    wait(500)
 
     move_motors(-500, -500, rotations=0.745)
     wait(150)
 
-    move_motors(500, -500, rotations=1.4)
+    move_motors(500, -500, rRotations=1.4)
     wait(150)
 
     move_motors(500, 500, rotations=0.745)
     wait(150)
 
-    send_cmd(sock, "T, -750, 150")
-    wait()
+    send_cmd(sock, "T, -750, 200") # turns up motor A
+    wait(250)
 
-
-
-
-    
-
-        
-
-    done(sock)
+    return sock
