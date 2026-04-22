@@ -64,8 +64,8 @@ def mozaic():
     wait(100)
 
     while colorsensorLeft.reflection() > 30:
-        left_motor.run(-500)
-        right_motor.run(500)
+        left_motor.run(-250)
+        right_motor.run(250)
 
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)

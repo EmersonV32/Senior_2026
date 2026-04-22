@@ -7,9 +7,11 @@ from line_follower import pid_line_follower
 from taking import mozaic
 from outil1 import tool1
 from outil2 import tool2
+from outil3 import tool3
 
 ev3 = EV3Brick()
 
 mozaic()
 sock= tool1()
 tool2(sock)
+tool3(sock)

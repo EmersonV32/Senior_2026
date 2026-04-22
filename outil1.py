@@ -171,7 +171,5 @@ def tool1():
 
     send_cmd(sock, "T, -750, 500") # turns up motor A
     wait(600)
-
-    ev3.speaker.beep()
-
+    
     return sock

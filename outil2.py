@@ -173,11 +173,4 @@ def tool2(sock):
     motor_a.run_angle(-1000, 250) # moves the white thing up a little bit
     wait(250)
 
-    move_motors(500, -500, rotations=1.75)
-    wait(250)
-
-    move_motors(250, 250, rotations=1.49)
-    wait(250)
-
-    ev3.speaker.beep()
-
+    return sock
