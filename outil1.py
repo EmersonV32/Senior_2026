@@ -55,23 +55,23 @@ def tool1():
     wait(500)
 
 
-    move_motors(-75, -75, degrees=30)
+    move_motors(-75, -75, degrees=30)  # twists to put the blocks in the black grid
     wait(150)
-    move_motors(75, 75, degrees=35)
+    move_motors(75, 75, degrees=35) # twists to put the blocks in the black grid
 
     send_cmd(sock, "T,-1000, 500") # turns up the motor A
     wait(150)
 
-    move_motors(-500, 500, rotations=1.67) 
+    move_motors(-500, 500, rotations=1.67) # moves to go and get the second row
     wait(150)
 
-    move_motors(500, 500, rotations=0.75)
+    move_motors(500, 500, rotations=0.75) # moves to go and get the second row
     wait(150)
 
-    move_motors(-500, 500, rotations=1.85)
+    move_motors(-500, 500, rotations=1.95) # moves to go and get the second row
     wait(150)
 
-    while colorsensorLeft.reflection() > 30:
+    while colorsensorLeft.reflection() > 30:   # moves to go and get the second row
         left_motor.run(-500)
         right_motor.run(500)
 
@@ -79,13 +79,13 @@ def tool1():
     right_motor.stop(Stop.BRAKE)
     wait(250)
 
-    move_motors(-300, 300, rotations=0.15)
+    move_motors(-300, 300, rotations=0.15)   # moves to go and get the second row
     wait(150)
 
-    move_motors(-500, -500, rotations=0.75)
+    move_motors(-500, -500, rotations=0.75)   # moves to go and get the second row
     wait(150)
 
-    pid_line_follower(follow_sensor_port=Port.S1,
+    pid_line_follower(follow_sensor_port=Port.S1,   # moves to go and get the second row
                         stop_sensor_port=Port.S4,
                         base_speed=250,
                         Kp=2, Kd=3, Ki=0,
@@ -94,12 +94,12 @@ def tool1():
                         stop_mode="c",
                         stop_threshold=20,
                         side="l")
+    wait(250)
+
+    move_motors(-500, 500, rotations=0.15)  # moves to go and get the second row
     wait(150)
 
-    move_motors(-500, 500, rotations=0.15)
-    wait(150)
-
-    pid_line_follower(follow_sensor_port=Port.S1,
+    pid_line_follower(follow_sensor_port=Port.S1,   # moves to go and get the second row
                         stop_sensor_port=Port.S4,
                         base_speed=250,
                         Kp=2, Kd=3, Ki=0,
@@ -109,27 +109,27 @@ def tool1():
                         stop_threshold=22,
                         side="l")
 
-    wait(125)
-
-    move_motors(-250, 250, rotations=0.967)
     wait(250)
 
-    move_motors(-250, -250, rotations=0.75)
+    move_motors(-250, 250, rotations=0.95) # moves to go and get the second row
     wait(250)
 
-    move_motors(-250, 250, rotations=0.42)
+    move_motors(-250, -250, rotations=0.75) # moves to go and get the second row
     wait(250)
 
-    motor_a.run_angle(600, 260)
+    move_motors(-250, 250, rotations=0.42) # moves to go and get the second row
+    wait(250)
+
+    motor_a.run_angle(600, 260) # moves down the 3d print with the second row
     wait(250)
 
     motor_d.run(500) # holds the blocks in place
     wait(150)
 
-    motor_a.run_time(-1000, 900)
+    motor_a.run_time(-1000, 900) # moves up the 3d print with the second row
     wait(250)
 
-    move_motors(500, -500, rotations=0.55)
+    move_motors(500, -500, rotations=0.55) # goes to take the first tool
     wait(150)
 
     move_motors(-500, -500, rotations=0.745)

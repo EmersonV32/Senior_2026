@@ -10,6 +10,6 @@ from outil2 import tool2
 
 ev3 = EV3Brick()
 
-#mozaic()
+mozaic()
 sock= tool1()
 tool2(sock)

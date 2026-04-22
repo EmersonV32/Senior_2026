@@ -42,7 +42,7 @@ def mozaic():
     move_motors(500, -500, duration_ms=850) # aligns with the wall
     wait(500)
 
-    move_motors(-300, 302, rotations=1.21) # moves to the first row of yellow blocks
+    move_motors(-300, 302, rotations=1.19) # moves to the first row of yellow blocks
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)
     wait(500)
@@ -60,7 +60,7 @@ def mozaic():
     move_motors(-500,-500, rotations=0.45) # turns to go deposit to the black grid
     wait(100)
 
-    move_motors(-567, 575, rotations=2.95) 
+    move_motors(-567, 575, rotations=3.1) 
     wait(100)
 
     while colorsensorLeft.reflection() > 30:
@@ -69,12 +69,12 @@ def mozaic():
 
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)
+    wait(250)
+
+    move_motors(-200, 200, rotations=0.18)
     wait(100)
 
-    move_motors(-200, 200, rotations=0.12)
-    wait(100)
-
-    left_motor.run_angle(-450, 180)
+    left_motor.run_angle(-450, 210)
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
