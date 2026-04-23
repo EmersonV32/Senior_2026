@@ -49,15 +49,13 @@ def tool1():
     move_motors(500, -500, rotations= 0.15) # moves back from the grid 
 
     move_motors(-500, -500, rotations= 1.485) # turns 180° 
-    wait(500)
 
-    send_cmd(sock, "T, 250, 500") # turns down the motor A
+    send_cmd(sock, "T, 250, 480") # turns down the motor A
     wait(500)
-
 
     move_motors(-75, -75, degrees=30)  # twists to put the blocks in the black grid
-    wait(150)
-    move_motors(75, 75, degrees=35) # twists to put the blocks in the black grid
+    wait(250)
+    move_motors(75, 75, degrees=40) # twists to put the blocks in the black grid
 
     send_cmd(sock, "T,-1000, 500") # turns up the motor A
     wait(150)
@@ -141,7 +139,7 @@ def tool1():
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=350,
+                        base_speed=400,
                         Kp=2, Kd=2, Ki=0,
                         target=47,
                         max_angle=None,
@@ -171,5 +169,5 @@ def tool1():
 
     send_cmd(sock, "T, -750, 500") # turns up motor A
     wait(600)
-    
+
     return sock

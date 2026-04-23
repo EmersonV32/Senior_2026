@@ -47,7 +47,7 @@ def tool2(sock):
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=250,
+                        base_speed=285,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
                         max_angle=None,
@@ -71,7 +71,7 @@ def tool2(sock):
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=510,
+                        base_speed=600,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
                         max_angle=1120,
@@ -79,7 +79,7 @@ def tool2(sock):
                         stop_threshold=22,
                         side="r")
 
-    wait(250)
+    wait(350)
 
     move_motors(250, 250, rotations=0.745)
     wait(100)
@@ -87,14 +87,14 @@ def tool2(sock):
     move_motors(-350, 350, rotations=1.75)
     wait(100)
 
-    send_cmd(sock,"T, -500, 450") # turns up the motor A
+    send_cmd(sock,"T, -250, 480") # turns up the motor A
     wait(500)
 
-    move_motors(-500, -500, rotations=1.2)
+    move_motors(-500, -500, rotations=1.2) # after deposing flower, will go and take white blocks
     wait(250)
 
     move_motors(-500, 500, rotations=1.8)
-    wait(1500)
+    wait(250)
 
     while colorsensorLeft.reflection() > 30:
         left_motor.run(-500)
@@ -104,8 +104,11 @@ def tool2(sock):
     right_motor.stop(Stop.BRAKE)
     wait(250)
 
-    move_motors(500, 500, rotations=0.4)
-    wait(1000)
+    move_motors(-250, 250, rotations=0.1)
+    wait(250)
+
+    move_motors(250, 250, rotations=0.4)
+    wait(250)
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
@@ -130,11 +133,11 @@ def tool2(sock):
     send_cmd(sock,"T, 500, 450") # turns down the motor A
     wait(500)
 
-    move_motors(-500, -500, rotations=0.6)
-    wait(1000)
+    move_motors(-500, -500, rotations=0.5)
+    wait(250)
 
     move_motors(-500, 500, rotations=3.15)
-    wait(1000)
+    wait(250)
 
     while colorsensorLeft.reflection() > 30:
         left_motor.run(-500)
@@ -149,7 +152,7 @@ def tool2(sock):
 
     pid_line_follower(follow_sensor_port=Port.S4,
                         stop_sensor_port=Port.S1,
-                        base_speed=225,
+                        base_speed=300,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
                         max_angle=None,
