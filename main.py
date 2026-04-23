@@ -11,7 +11,7 @@ from ciment import aroundgrid
 
 ev3 = EV3Brick()
 
-#mozaic()
+mozaic()
 sock= tool1()
 tool2(sock)
 aroundgrid(sock)

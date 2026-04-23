@@ -30,8 +30,11 @@ def done(sock):
     sock.close()
 
 def aroundgrid(sock):
-    move_motors(500, -500, rotations=1.75)
+    move_motors(500, -500, rotations=1.65)
     wait(250)
+
+    send_cmd(sock, "T, 100, 100")
+    wait(150)
 
     move_motors(250, 250, rotations=1.49)
     wait(250) 
@@ -39,25 +42,25 @@ def aroundgrid(sock):
     move_motors(400, -400, rotations=0.8)
     wait(250)
 
-    move_motors(-400, -400, rotations=0.25)
+    move_motors(-400, -400, rotations=0.3)
     wait(250)
 
-    move_motors(400, -400, rotations=0.95)
+    move_motors(400, -400, rotations=1.15)
     wait(250)
 
     send_cmd(sock, "T,-500, 450") # turns up the motor A
     wait(250)
 
-    move_motors(-400, 400, rotations=0.95)
+    move_motors(-400, 400, rotations=1.15)
     wait(250)
 
-    move_motors(400, 400, rotations=0.25)
+    move_motors(400, 400, rotations=0.3)
     wait(250)
 
-    move_motors(400, -400, rotations=0.35)
+    move_motors(400, -400, rotations=0.5)
     wait(250)
 
-    send_cmd(sock, "T,500,450") # turns down the motor A
+    send_cmd(sock, "T, 250, 480") # turns down the motor A
     wait(500)
 
     move_motors(-75, -75, degrees=30)  # twists to put the blocks in the black grid
@@ -102,8 +105,8 @@ def aroundgrid(sock):
     send_cmd(sock,"T, 500, 450") # turns down the motor A
     wait(500)
 
-    pid_line_follower(follow_sensor_port=Port.S1,
-                        stop_sensor_port=Port.S4,
+    pid_line_follower(follow_sensor_port=Port.S4,
+                        stop_sensor_port=Port.S1,
                         base_speed=500,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
@@ -114,8 +117,8 @@ def aroundgrid(sock):
     
     wait(250)
 
-    pid_line_follower(follow_sensor_port=Port.S1,
-                        stop_sensor_port=Port.S4,
+    pid_line_follower(follow_sensor_port=Port.S4,
+                        stop_sensor_port=Port.S1,
                         base_speed=300,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
@@ -125,11 +128,18 @@ def aroundgrid(sock):
                         side="r")
     wait(250)
 
-    move_motors(500, -500, rotations=1.75)
+    move_motors(500, -500, rotations=1.05)
     wait(250)
 
     move_motors(250, 250, rotations=1.49)
     wait(250) 
 
-    move_motors(400, -400, rotations=0.8)
+    move_motors(400, -400, rotations=0.95)
     wait(250)
+
+    send_cmd(sock, "T,-250, 500")
+    wait(500)
+
+    ev3.speaker.beep()
+
+    return sock

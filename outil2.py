@@ -47,7 +47,7 @@ def tool2(sock):
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=285,
+                        base_speed=367,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
                         max_angle=None,
@@ -60,13 +60,13 @@ def tool2(sock):
     move_motors(-300, 300, rotations=0.2)
     wait(250)
 
-    move_motors(300, 300, rotations=0.745)
+    move_motors(450, 450, rotations=0.745)
     wait(250)
 
-    send_cmd(sock,"T, 350, 500") # turns down the motor A
-    wait(510)
+    send_cmd(sock,"T, 250, 500") # turns down the motor A
+    wait(500)
 
-    move_motors(-300, -300, rotations=0.745)
+    move_motors(-450, -450, rotations=0.745)
     wait(100)
 
     pid_line_follower(follow_sensor_port=Port.S1,
@@ -81,7 +81,7 @@ def tool2(sock):
 
     wait(350)
 
-    move_motors(250, 250, rotations=0.745)
+    move_motors(250, 250, rotations=0.75)
     wait(100)
 
     move_motors(-350, 350, rotations=1.75)
@@ -90,7 +90,7 @@ def tool2(sock):
     send_cmd(sock,"T, -250, 480") # turns up the motor A
     wait(500)
 
-    move_motors(-500, -500, rotations=1.2) # after deposing flower, will go and take white blocks
+    move_motors(-500, -500, rotations=1.15) # after deposing flower, will go and take white ciments
     wait(250)
 
     move_motors(-500, 500, rotations=1.8)
@@ -122,7 +122,7 @@ def tool2(sock):
     
     wait(250)
 
-    move_motors(500, -500, rotations=0.2)
+    move_motors(500, -500, rotations=0.25)
     wait(200)
 
     move_motors(-500, -500, rotations=1.49)
@@ -130,13 +130,18 @@ def tool2(sock):
 
     move_motors(500, -500, rotations=0.25)
 
-    send_cmd(sock,"T, 500, 450") # turns down the motor A
-    wait(500)
-
-    move_motors(-500, -500, rotations=0.5)
+    send_cmd(sock,"T, 350, 500") # turns down the motor A
+    wait(600)
+    
+    move_motors(-100, -100, degrees=30)  # twists to put the blocks in the black grid
+    wait(250)
+    move_motors(100, 100, degrees=30) # twists to put the blocks in the black grid
     wait(250)
 
-    move_motors(-500, 500, rotations=3.15)
+    move_motors(-500, -500, rotations=0.45)
+    wait(250)
+
+    move_motors(-500, 500, rotations=3.1)
     wait(250)
 
     while colorsensorLeft.reflection() > 30:
@@ -148,7 +153,7 @@ def tool2(sock):
     wait(250)
 
     move_motors(500, 500, rotations=0.45)
-    wait(250)
+    wait(1000)
 
     pid_line_follower(follow_sensor_port=Port.S4,
                         stop_sensor_port=Port.S1,
