@@ -65,15 +65,3 @@ def pid_line_follower(follow_sensor_port=Port.S1,
     left_motor.stop(Stop.BRAKE)
     right_motor.stop(Stop.BRAKE)
     ev3.speaker.beep()  
-
-'''
-pid_line_follower(follow_sensor_port=Port.S4,
-                      stop_sensor_port=Port.S1,
-                      base_speed=400,
-                      Kp=2, Kd=3, Ki=0,
-                      target=30,
-                      max_angle=None,
-                      stop_mode="c",
-                      stop_threshold=20,
-                      side="r")
-'''
