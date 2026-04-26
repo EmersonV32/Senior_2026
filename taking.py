@@ -93,7 +93,7 @@ def mozaic():
 
     motor_a.run_angle(1000, 260) # moves the white thing down to deposit on black thing
 
-    motor_d.stop()
+    motor_d.stop(Stop.BRAKE)
     wait(50)
 
     motor_d.run_time(-300, 250) # releases the first row in the grid

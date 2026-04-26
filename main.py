@@ -21,7 +21,7 @@ aroundgrid(sock)
 
 
 #version 2
-mozaic()
+#mozaic()
 sock=test1()
 test2(sock)
 test3(sock)

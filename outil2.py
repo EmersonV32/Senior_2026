@@ -32,10 +32,10 @@ def done(sock):
 def test2(sock):
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=500,
+                        base_speed=650,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
-                        max_angle=950,
+                        max_angle=1000,
                         stop_mode="a",
                         stop_threshold=22,
                         side="l")
@@ -44,7 +44,7 @@ def test2(sock):
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=300,
+                        base_speed=450,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
                         max_angle=None,
@@ -54,13 +54,13 @@ def test2(sock):
 
     wait(250)
 
-    move_motors(500, -500, rotations=0.2)
+    move_motors(500, -500, rotations=0.4)
     wait(200)
 
-    move_motors(-500, -500, rotations=1.51)
+    move_motors(-500, -500, rotations=1.53)
     wait(250)
 
-    move_motors(500, -500, rotations=0.2)
+    move_motors(500, -500, rotations=0.4)
 
     send_cmd(sock,"T, 500, 480") # turns down the motor A
     wait(500)
@@ -98,7 +98,7 @@ def test2(sock):
     move_motors(369, 369, rotations=1.49)
     wait(250) 
 
-    move_motors(400, -400, rotations=0.5)
+    move_motors(400, -400, rotations=0.85)
     wait(250)
 
     send_cmd(sock, "T,-500, 500")
@@ -250,7 +250,7 @@ def tool2(sock):
     motor_a.run_angle(1000, 250) # moves the white thing down to deposit on black thing
     wait(100)
 
-    motor_d.stop()
+    motor_d.stop(Stop.BRAKE)
     wait(50)
 
     motor_d.run_time(-300, 250) # releases the first row in the grid

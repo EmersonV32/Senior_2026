@@ -45,6 +45,7 @@ def test1():
 
     ev3.screen.print("Connected!")
     ev3.speaker.beep()
+    '''
 
     move_motors(500, -500, rotations= 0.15) # moves back from the grid 
 
@@ -141,10 +142,10 @@ def test1():
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=500,
+                        base_speed=607,
                         Kp=2, Kd=2, Ki=0,
                         target=47,
-                        max_angle=1150,
+                        max_angle=1167,
                         stop_mode="a",
                         stop_threshold=20,
                         side="r")
@@ -177,7 +178,7 @@ def test1():
 
     pid_line_follower(follow_sensor_port=Port.S1,
                         stop_sensor_port=Port.S4,
-                        base_speed=600,
+                        base_speed=650,
                         Kp=2, Kd=3, Ki=0,
                         target=47,
                         max_angle=1120,
@@ -190,7 +191,7 @@ def test1():
     move_motors(250, 250, rotations=0.75)
     wait(100)
 
-    move_motors(-500, 500, rotations=1.75)
+    move_motors(-500, 500, rotations=2.2)
     wait(100)
 
     move_motors(350, -350, rotations=0.2)
@@ -199,7 +200,7 @@ def test1():
     send_cmd(sock,"T, -250, 480") # turns up the motor A
     wait(500)
 
-    move_motors(-500, 500, rotations=0.7)
+    move_motors(-500, 500, rotations=0.3)
 
     while colorsensorLeft.reflection() > 30:
         left_motor.run(-350)
@@ -226,12 +227,12 @@ def test1():
                         side="l")
     wait(250)
 
-    move_motors(-200, 200, rotations=0.55)
+    move_motors(-200, 200, rotations=0.5)
 
     motor_a.run_angle(1000, 250) # moves the white thing down to deposit on black thing
     wait(100)
 
-    motor_d.stop()
+    motor_d.stop(Stop.BRAKE)
     wait(50)
 
     motor_d.run_time(-300, 250) # releases the first row in the grid
@@ -255,6 +256,7 @@ def test1():
 
     send_cmd(sock, "T,-1000, 500") # turns up the motor A
     wait(150)
+    '''
 
     return sock
 
@@ -274,6 +276,8 @@ def tool1():
 
     ev3.screen.print("Connected!")
     ev3.speaker.beep()
+
+    return sock
 
     move_motors(500, -500, rotations= 0.15) # moves back from the grid 
 
